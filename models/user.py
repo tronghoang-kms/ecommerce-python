@@ -1,12 +1,9 @@
 from beanie import Document
-from datetime import datetime
-from pydantic import Field, EmailStr
+from pydantic import EmailStr
+from typing import Optional
 
 class User(Document):
+    username: str
     email: EmailStr
-    password: str
-    full_name: str
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-
-    class Settings:
-        name = "users"
+    is_active: bool = True
+    full_name: Optional[str] = None
