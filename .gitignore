@@ -1,0 +1,69 @@
+# ======================
+# 🐍 PYTHON & FASTAPI PROJECT
+# ======================
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+ENV/
+
+# Environment variables
+.env
+.env.*
+*.env
+
+# VSCode / IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs & temp
+*.log
+*.tmp
+*.bak
+
+# Coverage / test / reports
+.coverage
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.cache
+pytest_cache/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Node / Frontend (nếu có giao diện)
+node_modules/
+npm-debug.log*
+
+# Jupyter notebook
+.ipynb_checkpoints
+
+# Database dumps / test data
+*.sqlite3
+*.db
+
+# GitHub Actions / CI cache
+.github/workflows/__pycache__/
+.github/workflows/*.pyc
+
+# Custom project-specific
+uploads/
+temp/
