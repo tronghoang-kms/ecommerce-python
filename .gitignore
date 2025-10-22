@@ -1,64 +1,117 @@
-# ======================
-# 🐍 PYTHON & FASTAPI PROJECT
-# ======================
-
-# Byte-compiled / cache
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
+# C extensions
+*.so
 
-# Environment variables
-.env
-.env.*
-*.env
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# VSCode / IDE
-.vscode/
-.idea/
-*.code-workspace
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
 
-# OS-specific files
-.DS_Store
-Thumbs.db
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
 
-# Logs & temp
-*.log
-*.tmp
-*.bak
-
-# Coverage / test / reports
-.coverage
+# Unit test / coverage reports
 htmlcov/
 .tox/
+.nox/
+.coverage
+.coverage.*
+.cache
 nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
-.cache
-pytest_cache/
+.hypothesis/
 
-# Distribution / packaging
-build/
-dist/
-*.egg-info/
-.eggs/
+# Translations
+*.mo
+*.pot
 
-# Node / Frontend (nếu có giao diện)
-node_modules/
-npm-debug.log*
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
 
-# Jupyter notebook
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
 .ipynb_checkpoints
 
-# Database dumps / test data
-*.sqlite3
-*.db
+# IPython
+profile_default/
+ipython_config.py
 
-# GitHub Actions / CI cache
-.github/workflows/__pycache__/
-.github/workflows/*.pyc
+# pyenv
+.python-version
 
-# Custom project-specific
-uploads/
-temp/
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# PEP 582; used by e.g. python-isort
+__pypackages__/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# VS Code
+.vscode/
+
+# JetBrains IDEs
+.idea/
+*.iml
+
+# Logs
+*.log
