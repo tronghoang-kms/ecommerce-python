@@ -28,7 +28,7 @@ async def create_checkout_session(
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
 
-@router.post("/webhook")
+"""@router.post("/webhook")
 async def stripe_webhook(
     request: Request,
     stripe_signature: str = Header(None, alias="Stripe-Signature"),
@@ -61,5 +61,5 @@ async def stripe_webhook(
                 print(f"Failed to fulfill order for session {session.id}: {e}")
                 return JSONResponse(status_code=500, content={"detail": "Failed to process order"})
 
-    return {"status": "success"}
+    return {"status": "success"}"""
 
