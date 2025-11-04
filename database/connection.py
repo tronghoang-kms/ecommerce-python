@@ -1,13 +1,24 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
-import os
-from dotenv import load_dotenv
-
+from core.config import settings
 from models.user import User
-
-load_dotenv()
+from models.product import Product
+from models.cart import Cart
+from models.order import Order
 
 async def init_db():
-    client = AsyncIOMotorClient(os.getenv("MONGODB_URL"))
-    db_name = os.getenv("MONGO_DB_NAME")
-    await init_beanie(database=client[db_name], document_models=[User])
+    print(f"Connecting to MongoDB at {settings.MONGODB_URL}...")
+    client = AsyncIOMotorClient(settings.MONGODB_URL)
+    
+    db_name = settings.MONGO_DB_NAME
+    
+    await init_beanie(
+        database=client[db_name],
+        document_models=[
+            User,
+            Product,
+            Cart,
+            Order
+        ]
+    )
+    print(f"Beanie initialized with database '{db_name}'")

@@ -1,9 +1,10 @@
 from beanie import Document
-from pydantic import EmailStr
-from typing import Optional
+from pydantic import EmailStr, Field
 
 class User(Document):
-    username: str
-    email: EmailStr
-    is_active: bool = True
-    full_name: Optional[str] = None
+    email: EmailStr = Field(..., unique=True, index=True)
+    hashed_password: str
+    is_admin: bool = Field(default=False)
+
+    class Settings:
+        name = "users"
