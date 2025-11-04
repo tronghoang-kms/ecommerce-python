@@ -1,31 +1,21 @@
 from pydantic import BaseModel, EmailStr, Field
+from beanie import PydanticObjectId
 from typing import Optional
-from bson import ObjectId
-from schemas.common import PyObjectId
 
-
-class UserCreate(BaseModel):
-    username: str
+class UserBase(BaseModel):
     email: EmailStr
-    full_name: Optional[str] = None
-    password: str
 
+class UserCreate(UserBase):
+     password: str = Field(
+        ..., 
+        min_length=8, 
+        max_length=72, 
+        description="Password must be between 8 and 72 characters"
+    )
 
-class UserRead(BaseModel):
-    id: PyObjectId = Field(alias="_id")
-    username: str
-    email: EmailStr
-    full_name: Optional[str] = None
-    is_active: bool = True
+class UserRead(UserBase):
+    id: PydanticObjectId
+    is_admin: bool
 
     class Config:
-        populate_by_name = True  
-        arbitrary_types_allowed = True  
-        json_encoders = {ObjectId: str} 
-
-
-class UserUpdate(BaseModel):
-    username: Optional[str] = None
-    email: Optional[EmailStr] = None
-    full_name: Optional[str] = None
-    is_active: Optional[bool] = None
+        from_attributes = True

@@ -1,29 +1,25 @@
 from models.user import User
+from schemas.user import UserCreate
+from security.auth import get_password_hash
+from pydantic import EmailStr
 from typing import Optional
 
 class UserRepository:
-    @staticmethod
-    async def get_by_id(user_id: str) -> Optional[User]:
-        return await User.get(user_id)
+    
+    async def get_user_by_email(self, email: EmailStr) -> Optional[User]:
 
-    @staticmethod
-    async def create(user_data: dict) -> User:
-        user = User(**user_data)
-        await user.insert()
+        return await User.find_one(User.email == email)
+
+    async def create_user(self, email: EmailStr, hashed_password: str, is_admin: bool) -> User:
+        
+        user = User(
+            email=email,
+            hashed_password=hashed_password,
+            is_admin=is_admin
+        )
+        await user.create()
         return user
 
-    @staticmethod
-    async def update(user_id: str, update_data: dict) -> Optional[User]:
-        user = await User.get(user_id)
-        if not user:
-            return None
-        await user.update({"$set": update_data})
-        return await User.get(user_id)
-
-    @staticmethod
-    async def delete(user_id: str) -> bool:
-        user = await User.get(user_id)
-        if not user:
-            return False
-        await user.delete()
-        return True
+# Dependency function để inject
+def get_user_repository() -> UserRepository:
+    return UserRepository()

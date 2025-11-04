@@ -1,21 +1,24 @@
 from pydantic import BaseModel
+from beanie import PydanticObjectId
 from typing import Optional
 
-class ProductCreate(BaseModel):
+class ProductBase(BaseModel):
     name: str
-    description: Optional[str] = None
+    description: str
     price: float
-    in_stock: int = 0
+    inventory: int
 
-class ProductRead(BaseModel):
-    id: str
-    name: str
-    description: Optional[str] = None
-    price: float
-    in_stock: int
+class ProductCreate(ProductBase):
+    pass
+
+class ProductRead(ProductBase):
+    id: PydanticObjectId
+
+    class Config:
+        from_attributes = True
 
 class ProductUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
     price: Optional[float] = None
-    in_stock: Optional[int] = None
+    inventory: Optional[int] = None
