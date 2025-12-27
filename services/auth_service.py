@@ -12,7 +12,7 @@ class AuthService:
     def __init__(self, user_repo: UserRepository = Depends(get_user_repository)):
         self.user_repo = user_repo
 
-    async def register_user(self, user_create: UserCreate) -> User:
+    async def _register_user(self, user_create: UserCreate) -> User:
 
         existing_user = await self.user_repo.get_user_by_email(user_create.email)
         if existing_user:
